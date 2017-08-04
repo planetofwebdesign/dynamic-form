@@ -1,4 +1,4 @@
-import { Component, ViewChild, AfterViewInit, ChangeDetectorRef  } from '@angular/core';
+import { Component, ViewChild, AfterViewInit } from '@angular/core';
 import { Validators } from '@angular/forms';
 
 import { FieldConfig } from './dynamic-form/models/field-config.interface';
@@ -22,7 +22,6 @@ import { DynamicFormComponent } from './dynamic-form/containers/dynamic-form/dyn
 export class AppComponent implements AfterViewInit {
   @ViewChild(DynamicFormComponent) form: DynamicFormComponent;
 
-  constructor(private cdr: ChangeDetectorRef ) {}
   config: FieldConfig[] = [
     {
       type: 'input',
@@ -55,9 +54,8 @@ export class AppComponent implements AfterViewInit {
       }
     });
 
-     this.form.setDisabled('submit', true);
-     this.form.setValue('name', 'Todd Motto');
-     this.cdr.detectChanges();
+    this.form.setDisabled('submit', true);
+    this.form.setValue('name', 'Todd Motto');
   }
 
   submit(value: {[name: string]: any}) {
